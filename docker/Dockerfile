@@ -4,10 +4,11 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 RUN apt-get update && apt-get install -y wget unzip && apt-get clean
 RUN mkdir -p /app
-WORKDIR /app
+WORKDIR /workspace
 RUN wget "https://github.com/anuraghazra/github-readme-stats/archive/refs/heads/master.zip" -O master.zip
 RUN unzip master.zip
 RUN rm -f master.zip
+WORKDIR /workspace/github-readme-stats-master
 RUN yarn install
 
 #############
@@ -17,7 +18,7 @@ RUN yarn install
 FROM node:slim
 LABEL maintainer="Jamie Curnow <jc@jc21.com>"
 
-COPY --from=builder /app /app
+COPY --from=builder /workspace/github-readme-stats-master /app
 WORKDIR /app
 EXPOSE 9000
 
