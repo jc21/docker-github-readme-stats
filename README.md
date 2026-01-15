@@ -9,6 +9,7 @@ Refer to the [official repo](https://github.com/anuraghazra/github-readme-stats?
 for env var usage and instructions on setting up your `PAT_1` personal github token.
 
 ```yml
+---
 services:
   github-readme-stats:
     container_name: github-readme-stats
@@ -17,8 +18,8 @@ services:
       - '9000:9000'
     environment:
       PAT_1: 'github_pat_11A....'
-	  WHITELIST: 'jc21'
-	  GIST_WHITELIST: ''
+      WHITELIST: 'jc21'
+      GIST_WHITELIST: ''
     restart: unless-stopped
 ```
 
