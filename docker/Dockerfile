@@ -3,7 +3,7 @@ FROM node:slim AS builder
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 RUN apt-get update && apt-get install -y wget unzip && apt-get clean
-RUN mkdir -p /app
+RUN mkdir -p /workspace
 WORKDIR /workspace
 RUN wget "https://github.com/anuraghazra/github-readme-stats/archive/refs/heads/master.zip" -O master.zip
 RUN unzip master.zip
